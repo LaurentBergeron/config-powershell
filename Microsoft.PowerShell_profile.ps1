@@ -19,8 +19,8 @@ function st() {
     git status
 }
 
-function co([string]$arg1) {
-    git checkout $arg1
+function co() {
+    git checkout $args
 }
 
 function gp() {
