@@ -19,6 +19,10 @@ function st() {
     git status
 }
 
+function co([string]$arg1) {
+    git checkout $arg1
+}
+
 function gp() {
     git push
 }
