@@ -6,7 +6,8 @@ if ($env:TERM_PROGRAM -eq "vscode") {
 }
 
 # Aliases
-Set-Alias -Name ipy -Value ipython
+Set-Alias -Name ipy -Value C:\Users\LaurentBergeron\AppData\Local\Programs\Python\Python39\Scripts\ipython.exe
+Set-Alias -Name ipy37 -Value C:\Users\LaurentBergeron\AppData\Local\Programs\Python\Python37\Scripts\ipython.exe
 Set-Alias -Name venv -Value .\venv\Scripts\activate
 
 git config --global alias.co checkout
@@ -25,4 +26,8 @@ function co() {
 
 function gp() {
     git push
+}
+
+function penv() {
+    poetry shell
 }
