@@ -1,5 +1,7 @@
 # Place this file in {User}/Documents/WindowsPowerShell/
 
+# Must run Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 # Fix bug where ctrl+backspace prints "^W" to the console in vscode
 if ($env:TERM_PROGRAM -eq "vscode") {
   Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
