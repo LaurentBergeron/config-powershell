@@ -26,7 +26,16 @@ function co() {
     git checkout $args
 }
 
-
 function penv() {
     poetry shell
+}
+
+function release() {
+    If($args.Length -ne 1) {
+        echo "usage: release 0.1.0"
+        Return
+    }
+    echo "Tagging and pushing version $args!"
+    git tag -a v$args -m "Release Version v$args"
+    git push origin v$args
 }
