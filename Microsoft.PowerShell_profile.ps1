@@ -17,6 +17,7 @@ git config --global alias.fu 'commit -m'
 git config --global alias.st status
 git config --global alias.last 'log -1 HEAD'
 git config --global alias.undo 'reset --soft HEAD^'
+git config --global alias.wip 'commit -m "wip"'
 
 function st() {
     git status
