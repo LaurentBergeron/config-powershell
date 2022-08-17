@@ -10,6 +10,7 @@ if ($env:TERM_PROGRAM -eq "vscode") {
 # Aliases
 Set-Alias -Name ipy -Value ~\AppData\Local\Programs\Python\Python39\Scripts\ipython.exe
 Set-Alias -Name venv -Value .\venv\Scripts\activate
+Set-Alias -Name deac -Value deactivate
 
 git config --global alias.co checkout
 git config --global alias.br branch
