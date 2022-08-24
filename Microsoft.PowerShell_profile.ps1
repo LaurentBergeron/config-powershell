@@ -19,6 +19,7 @@ git config --global alias.st status
 git config --global alias.last 'log -1 HEAD'
 git config --global alias.undo 'reset --soft HEAD^'
 git config --global alias.wip 'commit -m "wip"'
+git config --global push.default current
 
 function st() {
     git status
