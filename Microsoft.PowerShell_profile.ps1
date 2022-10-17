@@ -7,6 +7,12 @@ if ($env:TERM_PROGRAM -eq "vscode") {
   Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
 }
 
+function prompt {
+    'PS ' + $(Get-Location) +
+        $(if ($NestedPromptLevel -ge 1) { '>>' }) +
+        "`r`n> "
+}
+
 # Aliases
 Set-Alias -Name ipy -Value ~\AppData\Local\Programs\Python\Python39\Scripts\ipython.exe
 Set-Alias -Name venv -Value .\venv\Scripts\activate
@@ -27,6 +33,11 @@ function st() {
 
 function co() {
     git checkout $args
+}
+
+function wip() {
+    git add .
+    git commit -m "wip"
 }
 
 function penv() {
