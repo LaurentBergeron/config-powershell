@@ -18,6 +18,8 @@ Set-Alias -Name ipy -Value ~\AppData\Local\Programs\Python\Python39\Scripts\ipyt
 Set-Alias -Name venv -Value .\venv\Scripts\activate
 Set-Alias -Name deac -Value deactivate
 
+Import-module posh-git
+
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.fu 'commit -m'
@@ -40,10 +42,11 @@ function wip() {
     git commit -m "wip"
 }
 
-function penv() {
-    poetry shell
+function sync() {
+    git checkout main
+    git pull
+    git checkout -
 }
-
 function release() {
     If($args.Length -ne 1) {
         echo "usage: release 0.1.0"
