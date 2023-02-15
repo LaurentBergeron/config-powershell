@@ -17,6 +17,9 @@ function prompt {
 Set-Alias -Name ipy -Value ~\AppData\Local\Programs\Python\Python39\Scripts\ipython.exe
 Set-Alias -Name venv -Value .\venv\Scripts\activate
 Set-Alias -Name deac -Value deactivate
+Set-Alias -Name p -Value pytest
+Set-Alias -Name m -Value mypy
+Set-Alias -Name f -Value flake8
 
 Import-module posh-git
 
@@ -31,6 +34,10 @@ git config --global push.default current
 
 function st() {
     git status
+}
+
+function gp() {
+    git push
 }
 
 function co() {
