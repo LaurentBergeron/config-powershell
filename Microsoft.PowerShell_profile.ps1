@@ -21,6 +21,7 @@ Set-Alias -Name m -Value mypy
 Set-Alias -Name f -Value flake8
 Set-Alias -Name t -Value pytest
 
+# Must run `PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force`
 Import-module posh-git
 
 git config --global alias.co checkout
@@ -38,6 +39,7 @@ function v() {
 
 function lock() {
     poetry lock --no-update
+    poetry install
 }
 
 function st() {
