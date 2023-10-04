@@ -39,7 +39,7 @@ function v() {
 
 function lock() {
     poetry lock --no-update
-    poetry install
+    poetry install --all-extras
 }
 
 function st() {
