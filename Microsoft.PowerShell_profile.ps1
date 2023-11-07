@@ -19,7 +19,6 @@ Set-Alias -Name venv -Value .\venv\Scripts\activate
 Set-Alias -Name deac -Value deactivate
 Set-Alias -Name m -Value mypy
 Set-Alias -Name f -Value flake8
-Set-Alias -Name t -Value pytest
 
 # Must run `PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force`
 Import-module posh-git
@@ -77,4 +76,8 @@ function release() {
 # unit tests
 function tu() {
     pytest tests
+}
+# tests with coverage
+function t() {
+    pytest --cov
 }
