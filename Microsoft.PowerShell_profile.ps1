@@ -77,7 +77,12 @@ function release() {
 function tu() {
     pytest tests
 }
+
 # tests with coverage
 function t() {
-    pytest --cov
+    If($args.Length -eq 0) {
+        pytest --cov
+        Return
+    }
+    pytest $args
 }
