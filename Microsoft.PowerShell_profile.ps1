@@ -1,5 +1,4 @@
 # Place this file in {User}/Documents/WindowsPowerShell/
-
 # Must run Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Fix bug where ctrl+backspace prints "^W" to the console in vscode
@@ -7,11 +6,17 @@ if ($env:TERM_PROGRAM -eq "vscode") {
   Set-PSReadLineKeyHandler -Chord 'Ctrl+w' -Function BackwardKillWord
 }
 
+# Prompt label
 function prompt {
     'PS ' + $(Get-Location) +
         $(if ($NestedPromptLevel -ge 1) { '>>' }) +
         "`r`n> "
 }
+
+# Set PSReadling autocomplete options
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
 
 # Aliases
 Set-Alias -Name ipy -Value ~\AppData\Local\Programs\Python\Python39\Scripts\ipython.exe
@@ -20,17 +25,15 @@ Set-Alias -Name deac -Value deactivate
 Set-Alias -Name m -Value mypy
 Set-Alias -Name f -Value flake8
 
-# Must run `PowerShellGet\Install-Module posh-git -Scope CurrentUser -Force`
-Import-module posh-git
-
-git config --global alias.fu 'commit -m'
 git config --global alias.last 'log -1 HEAD'
-git config --global alias.undo 'reset --soft HEAD^'
-git config --global alias.wip 'commit -m "wip"'
 git config --global push.default current
 
 function v() {
     poetry shell
+}
+
+function et {
+    Invoke-command -ScriptBlock {exit}
 }
 
 function lock() {
@@ -60,10 +63,13 @@ function wip() {
 }
 
 function sync() {
+    git stash
     git checkout main
     git pull
     git checkout -
+    git stash pop
 }
+
 function release() {
     If($args.Length -ne 1) {
         echo "usage: release 0.1.0"
@@ -74,16 +80,16 @@ function release() {
     git push origin v$args
 }
 
-# unit tests
-function tu() {
-    pytest tests
-}
-
-# tests with coverage
+# tests
 function t() {
+    # run with coverage if there are no arguments to pytest
     If($args.Length -eq 0) {
         pytest --cov
         Return
     }
     pytest $args
+}
+
+function trigger() {
+    git commit --allow-empty -m"Trigger Build $(Get-Date -UFormat "%FT%T%Z:00")" && git push
 }
