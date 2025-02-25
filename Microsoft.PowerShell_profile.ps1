@@ -25,6 +25,7 @@ Set-Alias -Name deac -Value deactivate
 Set-Alias -Name m -Value mypy
 Set-Alias -Name f -Value flake8
 
+git config --global core.longpaths true
 git config --global alias.last 'log -1 HEAD'
 git config --global push.default current
 
@@ -63,11 +64,9 @@ function wip() {
 }
 
 function sync() {
-    git stash
     git checkout main
     git pull
     git checkout -
-    git stash pop
 }
 
 function release() {
