@@ -1,4 +1,4 @@
-# Place this file in {User}/Documents/WindowsPowerShell/
+# Place this file in {User}/Documents/PowerShell/
 # Must run Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Fix bug where ctrl+backspace prints "^W" to the console in vscode
